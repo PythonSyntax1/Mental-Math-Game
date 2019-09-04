@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+
 
 import java.util.Iterator;
 
@@ -66,7 +66,7 @@ public class MCQuizQuestion extends AppCompatActivity {
         timer.start();
 
         livesLeftView = findViewById(R.id.LivesView);
-        livesLeftView.setText("Lives Left" + livesLeft);
+        livesLeftView.setText("Lives Left: " + livesLeft);
 
     }
 
@@ -110,7 +110,8 @@ public class MCQuizQuestion extends AppCompatActivity {
 
         // If the answer is incorrect and there are no lives left after deduction, end game
         } else if (livesLeft == 1) {
-            //End everything
+            Intent intent = new Intent(this, MainMenu.class);
+            startActivity(intent);
             return false;
 
 
@@ -131,6 +132,11 @@ public class MCQuizQuestion extends AppCompatActivity {
         mcButtonThree.setText(String.valueOf(currentQuestion.getOptionThree()));
         mcButtonFour.setText(String.valueOf(currentQuestion.getOptionFour()));
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Disable
     }
 
 

@@ -86,4 +86,11 @@ public class QuizQuestion extends AppCompatActivity {
             //Do Nothing
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        //Disable
+    }
+
+
 }

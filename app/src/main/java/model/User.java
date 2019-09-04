@@ -1,7 +1,6 @@
 package model;
 
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,12 +26,14 @@ public class User {
             while (i < currentsize)  {
                 if (newTime.isBefore(currentResultsList.get(i))) {
                     currentResultsList.add(i, newTime);
+                    return;
                 }
                 else {
                     i ++;
                 }
                 if (i == currentsize) {
                     currentResultsList.add(newTime);
+                    return;
                 }
             } checkListSize(currentResultsList);
         } else {
@@ -56,12 +57,14 @@ public class User {
             while (i < currentsize)  {
                 if (newTime.isBefore(currentResultsList.get(i))) {
                     currentResultsList.add(i, newTime);
+                    return;
                 }
                 else {
                     i ++;
                 }
                 if (i == currentsize) {
                     currentResultsList.add(newTime);
+                    return;
                 }
             } checkListSize(currentResultsList);
         } else {
