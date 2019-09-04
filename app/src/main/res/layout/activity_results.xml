@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintBottom_toTopOf="parent"
+    android:orientation="vertical"
+    tools:context=".ResultsActivity">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:tabTextColor="@android:color/black">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/OETab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open Ended" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/MCTab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MC" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/Tab3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Game" />
+
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
+
+</LinearLayout>
