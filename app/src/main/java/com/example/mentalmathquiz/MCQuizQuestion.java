@@ -118,7 +118,7 @@ public class MCQuizQuestion extends AppCompatActivity {
         // If the answer is incorrect, deduct a life.
         } else {
             livesLeft -= 1;
-            livesLeftView.setText("Lives Left" + livesLeft);
+            livesLeftView.setText("Lives Left: " + livesLeft);
             return false;
         }
     }

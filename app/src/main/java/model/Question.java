@@ -49,7 +49,7 @@ public class Question {
         }
         else if (questionType == 3) {
 
-            Integer numFour = numTwo/questionType;
+            Integer numFour = (numTwo/questionType) + 1;
             numOne = numOne * numFour;
 
             questionAnswer = numOne / numFour;

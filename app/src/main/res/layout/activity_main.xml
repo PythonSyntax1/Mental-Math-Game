@@ -17,7 +17,7 @@
         android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="@string/number_questions"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
