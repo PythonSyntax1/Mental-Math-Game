@@ -2,14 +2,18 @@ package com.example.mentalmathquiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
+import com.google.gson.Gson;
 
 import java.util.Iterator;
 
@@ -34,6 +38,10 @@ public class MCQuizQuestion extends AppCompatActivity {
     private Button mcButtonFour;
 
     private Integer questionNumber;
+
+    private Integer progressStatus = 0;
+    private ProgressBar progressBar;
+
 
     public static final String result = "";
 
@@ -65,6 +73,10 @@ public class MCQuizQuestion extends AppCompatActivity {
         timer = findViewById(R.id.Timer);
         timer.start();
 
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setMax(questionNumber);
+
+
         livesLeftView = findViewById(R.id.LivesView);
         livesLeftView.setText("Lives Left: " + livesLeft);
 
@@ -94,6 +106,8 @@ public class MCQuizQuestion extends AppCompatActivity {
         if (chosenPosition == currentCorrectAnswerPosition) {
 
             if (currentIterator.hasNext()) {
+                progressStatus += 1;
+                progressBar.setProgress(progressStatus);
                 setNextQuestion();
                 return true;
 
@@ -103,7 +117,6 @@ public class MCQuizQuestion extends AppCompatActivity {
                 String time = timer.getText().toString();
                 Intent intent = new Intent(this, MainMenu.class);
                 user.insertIntoMC(time, questionNumber);
-
                 startActivity(intent);
                 return true;
             }
@@ -138,7 +151,6 @@ public class MCQuizQuestion extends AppCompatActivity {
     public void onBackPressed() {
         //Disable
     }
-
 
 
 

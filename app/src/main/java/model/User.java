@@ -1,10 +1,24 @@
 package model;
 
 
+
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+
 
 public class User {
 
@@ -80,6 +94,9 @@ public class User {
         }
     }
 
+
+
+
     public Boolean mcContains(Integer num) {
         return mcResults.containsKey(num);
     }
@@ -95,6 +112,63 @@ public class User {
     public ArrayList<LocalTime> getOEList(Integer num) {
         return oeResults.get(num);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*public void loadData() {
+        try {
+            Gson gson = new Gson();
+            BufferedReader br = new BufferedReader(new FileReader("results.json"));
+            mcResults = gson.fromJson(br, new TypeToken<Map<Integer, ArrayList<LocalTime>>>(){}.getType());
+        } catch (IOException e) {
+            //do nothing
+        }
+    }
+
+    public void saveData() {
+
+        try {
+            Gson gson = new Gson();
+            String jsonString = gson.toJson(mcResults);
+            FileWriter fileWriter = new FileWriter("results.json");
+            fileWriter.write(jsonString);
+            fileWriter.close();
+        } catch (IOException e) {
+            //do nothing
+        }
+
+    }*/
+
 
 
 

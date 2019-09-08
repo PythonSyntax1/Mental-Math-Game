@@ -4,17 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.Iterator;
 
 import model.Question;
 import model.Quiz;
-import model.User;
+
 
 import static com.example.mentalmathquiz.MainMenu.user;
 
@@ -24,6 +24,10 @@ public class QuizQuestion extends AppCompatActivity {
     private Iterator<Question> currentIterator;
 
     private Integer questionNumber;
+
+    private Integer progressStatus = 0;
+    private ProgressBar progressBar;
+
 
 
     Chronometer timer;
@@ -48,6 +52,9 @@ public class QuizQuestion extends AppCompatActivity {
         textView.setText(currentQuestion.getQuestionString());
         currentQuestionAnswer = currentQuestion.getQuestionAnswer();
 
+        progressBar = findViewById(R.id.progressBar2);
+        progressBar.setMax(questionNumber);
+
         //Starts the timer
         timer = findViewById(R.id.Timer);
         timer.start();
@@ -66,6 +73,8 @@ public class QuizQuestion extends AppCompatActivity {
             if (currentQuestionAnswer == inputedAnswer) {
 
                 if (currentIterator.hasNext()) {
+                    progressStatus += 1;
+                    progressBar.setProgress(progressStatus);
                     Question currentQuestion = currentIterator.next();
                     TextView textView = findViewById(R.id.textView);
                     textView.setText(currentQuestion.getQuestionString());
