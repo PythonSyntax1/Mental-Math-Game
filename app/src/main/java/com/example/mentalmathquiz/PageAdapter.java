@@ -23,7 +23,7 @@ public class PageAdapter extends FragmentPagerAdapter {
             case 1:
                 return new MCTab();
             case 2:
-                return new tab3();
+                return new GameTab();
             default:
                 return null;
         }

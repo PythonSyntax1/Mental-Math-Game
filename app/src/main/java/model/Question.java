@@ -6,9 +6,9 @@ public class Question {
 
     protected String questionString;
     protected Integer questionAnswer;
-    private Integer questionType;
-    private Integer numOne;
-    private Integer numTwo;
+    protected Integer questionType;
+    protected Integer numOne;
+    protected Integer numTwo;
 
 
     public Question() {

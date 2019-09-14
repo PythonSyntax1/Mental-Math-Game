@@ -2,17 +2,6 @@ package model;
 
 
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.reflect.Type;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +13,7 @@ public class User {
 
     private Map<Integer, ArrayList<LocalTime>> mcResults = new HashMap<>();
     private Map<Integer, ArrayList<LocalTime>> oeResults = new HashMap<>();
+    private ArrayList<Integer> gameResults = new ArrayList<>();
 
 
 
@@ -40,14 +30,14 @@ public class User {
             while (i < currentsize)  {
                 if (newTime.isBefore(currentResultsList.get(i))) {
                     currentResultsList.add(i, newTime);
-                    return;
+                    break;
                 }
                 else {
                     i ++;
                 }
                 if (i == currentsize) {
                     currentResultsList.add(newTime);
-                    return;
+                    break;
                 }
             } checkListSize(currentResultsList);
         } else {
@@ -71,14 +61,14 @@ public class User {
             while (i < currentsize)  {
                 if (newTime.isBefore(currentResultsList.get(i))) {
                     currentResultsList.add(i, newTime);
-                    return;
+                    break;
                 }
                 else {
                     i ++;
                 }
                 if (i == currentsize) {
                     currentResultsList.add(newTime);
-                    return;
+                    break;
                 }
             } checkListSize(currentResultsList);
         } else {
@@ -89,12 +79,33 @@ public class User {
     }
 
     public void checkListSize(ArrayList<LocalTime> list) {
-        if (list.size() > 10) {
-            list.remove(10);
+        if (list.size() > 15) {
+            list.remove(15);
         }
     }
 
+    public void insertIntoGameResults(Integer score) {
+        Integer i = 0;
+        Integer currentsize = gameResults.size();
+        if (currentsize == 0) {
+            gameResults.add(score);
+        }
+        while (i < currentsize) {
+            if (score > gameResults.get(i)) {
+                gameResults.add(i, score);
+                break;
+            } else {
+                i ++;
 
+            } if (i == currentsize) {
+                gameResults.add(score);
+                break;
+            }
+        } if (gameResults.size() > 15){
+            gameResults.remove(15);
+        }
+
+    }
 
 
     public Boolean mcContains(Integer num) {
@@ -111,6 +122,10 @@ public class User {
 
     public ArrayList<LocalTime> getOEList(Integer num) {
         return oeResults.get(num);
+    }
+
+    public ArrayList<Integer> getGameList() {
+        return gameResults;
     }
 
 

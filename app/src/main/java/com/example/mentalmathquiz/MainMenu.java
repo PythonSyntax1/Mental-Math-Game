@@ -50,4 +50,9 @@ public class MainMenu extends AppCompatActivity {
         intent.putExtra(quizType, "Result");
         startActivity(intent);
     }
+
+    public void openGame(View view) {
+        Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
+    }
 }

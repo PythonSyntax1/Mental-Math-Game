@@ -12,11 +12,11 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 public class ResultsActivity extends AppCompatActivity implements OETab.OnFragmentInteractionListener ,
-MCTab.OnFragmentInteractionListener, tab3.OnFragmentInteractionListener {
+MCTab.OnFragmentInteractionListener, GameTab.OnFragmentInteractionListener {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private TabItem mcTab, oeTab, tab3;
+    private TabItem mcTab, oeTab, gameTab;
     public PagerAdapter pagerAdapter;
 
     private String quizlength;
@@ -32,7 +32,7 @@ MCTab.OnFragmentInteractionListener, tab3.OnFragmentInteractionListener {
         tabLayout = findViewById(R.id.tablayout);
         mcTab = findViewById(R.id.MCTab);
         oeTab = findViewById(R.id.OETab);
-        tab3 = findViewById(R.id.Tab3);
+        gameTab = findViewById(R.id.GameTab);
         viewPager = findViewById(R.id.view_pager);
 
 

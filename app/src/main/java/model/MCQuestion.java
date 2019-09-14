@@ -16,7 +16,7 @@ public class MCQuestion extends Question {
 
         // Generates how where the actual answer is relative to the other options.
         Random randomPosition = new Random();
-        position = randomPosition.nextInt(4);
+        position = randomPosition.nextInt(3);
         if (questionAnswer <= 2) {
             position = 0;
         }
@@ -40,18 +40,31 @@ public class MCQuestion extends Question {
             optionThree = questionAnswer + 1;
             optionFour = questionAnswer + 2;
         }
-        else if (position == 2) {
+        else if (position == 2 && questionAnswer < 25) {
             optionOne = questionAnswer - 2;
             optionTwo = questionAnswer - 1;
             optionThree = questionAnswer;
             optionFour = questionAnswer + 1;
         }
-        else if (position == 3) {
+        else if (position == 2) {
+            optionOne = questionAnswer - 10;
+            optionTwo = questionAnswer - 20;
+            optionThree = questionAnswer;
+            optionFour = questionAnswer + 3;
+        }
+        else if (position == 3 && questionAnswer < 25) {
             optionOne = questionAnswer - 3;
             optionTwo = questionAnswer - 2;
             optionThree = questionAnswer - 1;
             optionFour = questionAnswer;
+
+        } else if (position == 3) {
+            optionOne = questionAnswer - 10;
+            optionTwo = questionAnswer - 20;
+            optionThree = questionAnswer;
+            optionFour = questionAnswer + 3;
         }
+
     }
 
     public Integer getPosition() {
