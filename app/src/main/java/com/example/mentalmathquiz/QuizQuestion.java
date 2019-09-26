@@ -86,9 +86,7 @@ public class QuizQuestion extends AppCompatActivity {
                     String time = timer.getText().toString();
                     user.insertIntoOE(time, questionNumber);
 
-                    Intent intent = new Intent(this, MainMenu.class);
-
-                    startActivity(intent);
+                    finish();
                 }
             }
         } catch (Exception e) {

@@ -4,10 +4,13 @@ import java.util.Random;
 
 public class MCQuestion extends Question {
 
+    //The options that appear on the screen for each question
     private Integer optionOne;
     private Integer optionTwo;
     private Integer optionThree;
     private Integer optionFour;
+
+    //The position of the correct answer (0-3)
     private Integer position;
 
 
@@ -27,6 +30,8 @@ public class MCQuestion extends Question {
     }
 
 
+    //Based on the randomly generated positions, generates the position and values of each
+    //Incorrect answer
     public void generateOtherOptions() {
         if (position == 0) {
             optionOne = questionAnswer;
@@ -40,6 +45,7 @@ public class MCQuestion extends Question {
             optionThree = questionAnswer + 1;
             optionFour = questionAnswer + 2;
         }
+        //Varies the incorrect answers to reduce predictability
         else if (position == 2 && questionAnswer < 25) {
             optionOne = questionAnswer - 2;
             optionTwo = questionAnswer - 1;
@@ -52,6 +58,7 @@ public class MCQuestion extends Question {
             optionThree = questionAnswer;
             optionFour = questionAnswer + 3;
         }
+        //Varies the incorrect answers to reduce predictability
         else if (position == 3 && questionAnswer < 25) {
             optionOne = questionAnswer - 3;
             optionTwo = questionAnswer - 2;
@@ -86,6 +93,8 @@ public class MCQuestion extends Question {
     public Integer getOptionFour() {
         return optionFour;
     }
+
+
 
 
 }

@@ -115,16 +115,14 @@ public class MCQuizQuestion extends AppCompatActivity {
             } else {
                 timer.stop();
                 String time = timer.getText().toString();
-                Intent intent = new Intent(this, MainMenu.class);
                 user.insertIntoMC(time, questionNumber);
-                startActivity(intent);
+                finish();
                 return true;
             }
 
         // If the answer is incorrect and there are no lives left after deduction, end game
         } else if (livesLeft == 1) {
-            Intent intent = new Intent(this, MainMenu.class);
-            startActivity(intent);
+            finish();
             return false;
 
 

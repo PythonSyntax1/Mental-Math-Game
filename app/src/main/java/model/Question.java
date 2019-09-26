@@ -19,11 +19,15 @@ public class Question {
         numOne = rand1.nextInt(30);
         numTwo = rand2.nextInt(30);
 
+        //Specifies which operation the question should be
+        //Operation is one of : *, + , -, /
         questionType = rand3.nextInt(4);
 
         createQuestionStringAndAnswer();
     }
 
+    //Creates the question string, by appending the two randomly generated number
+    //Sets the question answer by taking the two numbers and applying the correct operation
     public void createQuestionStringAndAnswer() {
 
         if (questionType == 0) {
@@ -65,4 +69,6 @@ public class Question {
     public Integer getQuestionAnswer() {
         return questionAnswer;
     }
+
+    public Integer getQuestionType() {return questionType;}
 }

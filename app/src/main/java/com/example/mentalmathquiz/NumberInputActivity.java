@@ -59,6 +59,7 @@ public class NumberInputActivity extends AppCompatActivity {
             Integer newnum = Integer.parseInt(num);
             intent.putExtra(quizlength, num);
             startActivity(intent);
+            finish();
         } catch (NumberFormatException e) {
             System.out.println("Not number");
         }

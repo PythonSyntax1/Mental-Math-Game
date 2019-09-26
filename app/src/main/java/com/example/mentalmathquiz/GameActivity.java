@@ -238,8 +238,7 @@ import static com.example.mentalmathquiz.MainMenu.user;
     public void checkLivesLeft(){
         if (livesleft == 1) {
             user.insertIntoGameResults(score);
-            Intent intent = new Intent(this, MainMenu.class);
-            startActivity(intent);
+            finish();
         }
     }
 
