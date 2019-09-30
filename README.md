@@ -1,35 +1,36 @@
 # Mental-Math-Game 
 
-This is an Android application that creates Math quizzes in either Open ended or Multiple choice mode. As of September 4th, it is still
-incomplete, but the majority of the functionality for both game modes are working, as well as the results screen, which saves high scores
-from both game modes. In future commits, there will be another game mode added, as well as improvement to the UI. 
+This is an Android application that creates Math quizzes in either open ended or multiple choice mode. In addition, there is a flappy bird style game mode. High scores are saved and sorted in a results screen. 
 
-# Contents:
+# Screens:
 
-Image 1 : Main Menu
+**Main Menu**
+  - Made with basic Constraint layout. Each button leads to a specific game-mode, or the results screen.
 
-Image 2 : MC GameMode
-
-Image 3: Results 
-
-
-![screengrab4](https://user-images.githubusercontent.com/51872355/64304496-e2b6d400-cf40-11e9-936c-e2a306969cac.png)
-
-
-
-
-
-
-
-![screengrab3](https://user-images.githubusercontent.com/51872355/64304501-f104f000-cf40-11e9-8ead-8c3891e565fa.png)
+**Question Amount Input**
+  - This activity loads when entering either the open ended, multiple choice or results mode. It determines the amount of questions your quiz, or which results you would like to view. Note that regardless of the number inputted, the game-mode results will stay the same, as there is no number input for that mode.
+  
+**Open Ended Mode**
+  - This mode asks open ended questions and is timed. 
+ 
+**Multiple Choice Mode**
+  - Asks multiple choice questions and is timed. 
+  - Player starts with three lives, and a life is deducted everytime an answer is incorrect.
+  
+**Game Mode**
+  - Character moves up and down the screen and tries to avoid / catch projectiles. A question and answer is put at the top of the screen, and a player has to move the character to touch check mark projectile if it is correct, and red crosses if it is incorrect
+  - Player starts with five lives, and a life is deducted if they miss the correct projectile, touch the incorrect projectile, or touch one of the damage projectiels.
 
 
+**Results Screen**
+  - Results for each game-mode saved in a tabbed view.
+  - Game mode results persist when app is closed.
+  
+  
+  
+  
 
 
+ 
 
-
-
-
-
-![screengrab5](https://user-images.githubusercontent.com/51872355/64304482-d2065e00-cf40-11e9-9e53-f752f61b3698.png)
 
