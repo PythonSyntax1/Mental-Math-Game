@@ -151,13 +151,6 @@ public class User {
         return gameResults;
     }
 
-    public void setmcResults(HashMap<Integer, ArrayList<LocalTime>> h) {
-        mcResults = h;
-    }
-
-    public void setOeResults(HashMap<Integer, ArrayList<LocalTime>> h) {
-        oeResults = h;
-    }
 
     public void setGameResults(ArrayList<Integer> h) {
         gameResults = h;

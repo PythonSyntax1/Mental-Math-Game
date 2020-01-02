@@ -14,65 +14,98 @@ import model.Question;
 
 import static org.junit.Assert.*;
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
+
 public class QuestionTest {
 
-    private MCQuestion testMCQuestion;
-    private Question testQuestion;
+    private ArrayList<MCQuestion> mcQuestionTestList ;
+    private ArrayList<Question> testQuestionList;
 
     @Before
     public void createNewQuestion() {
-        testMCQuestion = new MCQuestion();
-        testQuestion = new Question();
+        //Because the questions are created with random numbers, 10 questions are tested at a time
+        //so that there is a smaller chance where there is an uncaught case where the test fails.
+        mcQuestionTestList = new ArrayList<>();
+        for (int i = 0; i <= 10; i++) {
+            MCQuestion singleMCquestion = new MCQuestion();
+            mcQuestionTestList.add(singleMCquestion);
+        }
+        testQuestionList = new ArrayList<>();
+        for (int i = 0; i <= 10; i++) {
+            MCQuestion singleMCquestion = new MCQuestion();
+            mcQuestionTestList.add(singleMCquestion);
+        }
     }
 
     @Test
     public void mcQuestionPositive() {
-        assertTrue(testMCQuestion.getQuestionAnswer() > 0);
-        assertTrue(testMCQuestion.getOptionOne() > 0);
-        assertTrue(testMCQuestion.getOptionTwo() > 0);
-        assertTrue(testMCQuestion.getOptionThree() > 0);
-        assertTrue(testMCQuestion.getOptionFour() > 0);
+        for (MCQuestion testMCQuestion : mcQuestionTestList) {
+            if (testMCQuestion.getQuestionAnswer() < 0) {
+                fail();
+            }
+            if (testMCQuestion.getOptionOne() < 0) {
+                fail();
+            }
+            if (testMCQuestion.getOptionTwo() < 0) {
+                fail();
+            }
+            if (testMCQuestion.getOptionThree() < 0) {
+                fail();
+            }
+            if (testMCQuestion.getOptionFour() < 0) {
+                fail();
+            }
+        }
     }
+
 
     @Test
     public void mcQuestionOneCorrect() {
-        Integer counter = 0;
-        if (testMCQuestion.getOptionOne() == testMCQuestion.getQuestionAnswer()) {
-            counter += 1;
+        for (MCQuestion testMCQuestion : mcQuestionTestList) {
+            Integer counter = 0;
+            if (testMCQuestion.getOptionOne() == testMCQuestion.getQuestionAnswer()) {
+                counter += 1;
+            }
+            if (testMCQuestion.getOptionTwo() == testMCQuestion.getQuestionAnswer()) {
+                counter += 1;
+            }
+            if (testMCQuestion.getOptionThree() == testMCQuestion.getQuestionAnswer()) {
+                counter += 1;
+            }
+            if (testMCQuestion.getOptionFour() == testMCQuestion.getQuestionAnswer()) {
+                counter += 1;
+            }
+            if (counter != 1) {
+                fail();
+            }
         }
-        if (testMCQuestion.getOptionTwo() == testMCQuestion.getQuestionAnswer()) {
-            counter += 1;
-        }
-        if (testMCQuestion.getOptionThree() == testMCQuestion.getQuestionAnswer()) {
-            counter += 1;
-        }
-        if (testMCQuestion.getOptionFour() == testMCQuestion.getQuestionAnswer()) {
-            counter += 1;
-        }
-        assertTrue(1 == counter);
     }
 
     @Test
     public void typeCorrect() {
-        if (testQuestion.getQuestionType() == 0) {
-            assertTrue(testQuestion.getQuestionString().contains("+"));
-        }
-        else if (testQuestion.getQuestionType() == 1) {
-            assertTrue(testQuestion.getQuestionString().contains("-"));
-        }
-        else if (testQuestion.getQuestionType() == 2) {
-            assertTrue(testQuestion.getQuestionString().contains("*"));
-        }
-        else if (testQuestion.getQuestionType() == 3) {
-            assertTrue(testQuestion.getQuestionString().contains("/"));
-        }
-        else {
-            fail("Invalid question type");
+        for (Question testQuestion: testQuestionList) {
+            if (testQuestion.getQuestionType() == 0) {
+                if (!testQuestion.getQuestionString().contains("+")) {
+                    fail();
+                }
+            }
+            else if (testQuestion.getQuestionType() == 1) {
+                if (!testQuestion.getQuestionString().contains("-")) {
+                    fail();
+                }
+            }
+            else if (testQuestion.getQuestionType() == 2) {
+                if (!testQuestion.getQuestionString().contains("*")) {
+                    fail();
+                }
+            }
+            else if (testQuestion.getQuestionType() == 3) {
+                if (!testQuestion.getQuestionString().contains("/")) {
+                    fail();
+                }
+            }
+            else {
+                fail("Invalid question type");
+            }
         }
     }
 

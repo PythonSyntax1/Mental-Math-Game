@@ -35,7 +35,6 @@ public class MainMenu extends AppCompatActivity {
         }
         updated = true;
 
-
     }
 
     private void saveData() {
