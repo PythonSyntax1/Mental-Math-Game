@@ -1,17 +1,21 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MCQuiz implements Iterable<MCQuestion> {
+public class MCQuiz implements Iterable<QuestionInterface> {
 
     private int quizLength;
-    private List<MCQuestion> questionList = new LinkedList<>();
+    private ArrayList<QuestionInterface> questionList = new ArrayList<>();
+    private QuizTypeStrategy strategy;
 
 
-    public MCQuiz(int quizLength) {
+
+    public MCQuiz(int quizLength, QuizTypeStrategy strategy) {
         this.quizLength = quizLength;
+        this.strategy = strategy;
         addMCQuestions();
     }
 
@@ -19,14 +23,10 @@ public class MCQuiz implements Iterable<MCQuestion> {
 
     // Populates Quiz with Multiple Choice Questions
     public void addMCQuestions() {
-
-        for (int j = 0; j < quizLength; j++) {
-            MCQuestion newMCQuestion = new MCQuestion();
-            questionList.add(newMCQuestion);
-        }
+        questionList = strategy.createQuiz(quizLength);
     }
 
-    public Iterator<MCQuestion> iterator() {
+    public Iterator<QuestionInterface> iterator() {
         return questionList.iterator();
     }
 }

@@ -9,14 +9,17 @@ public class GameQuestion extends Question {
     //The answer that appears in the question string. It can be either wrong or right.
     private Integer currentAnswer;
 
+    private Integer questionAnswerInt;
+
     //Chooses either 0 or 1 randomly. This determine whether the answer will be wrong or right.
     public GameQuestion() {
         super();
         Random rndRightAnswer = new Random();
         Integer randomInteger = rndRightAnswer.nextInt(2);
 
+        questionAnswerInt = Integer.valueOf(questionAnswer);
         if (randomInteger == 0) {
-            currentAnswer = questionAnswer;
+            currentAnswer = questionAnswerInt;
             rightAnswer = true;
         } else {
             createWrongAnswer();
@@ -31,11 +34,11 @@ public class GameQuestion extends Question {
         Random randomPosition = new Random();
         Integer position = randomPosition.nextInt(2);
         if (position == 0) {
-            currentAnswer = questionAnswer - 1;
+            currentAnswer = questionAnswerInt - 1;
         } if (position == 1) {
-            currentAnswer = questionAnswer + 1;
+            currentAnswer = questionAnswerInt + 1;
         } else {
-            currentAnswer = questionAnswer + 2;
+            currentAnswer = questionAnswerInt + 2;
         }
 
     }

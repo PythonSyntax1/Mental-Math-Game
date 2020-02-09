@@ -19,6 +19,8 @@ import java.util.Iterator;
 
 import model.MCQuestion;
 import model.MCQuiz;
+import model.MCStrategy;
+import model.QuestionInterface;
 
 import static com.example.mentalmathquiz.MainMenu.user;
 
@@ -27,7 +29,7 @@ public class MCQuizQuestion extends AppCompatActivity {
 
     private Integer livesLeft = 3;
     private Integer currentCorrectAnswerPosition;
-    private Iterator<MCQuestion> currentIterator;
+    private Iterator<QuestionInterface> currentIterator;
 
     private TextView livesLeftView;
     private TextView mcQuestionView;
@@ -57,7 +59,7 @@ public class MCQuizQuestion extends AppCompatActivity {
         questionNumber = Integer.parseInt(quizlength);
 
         // Creates a new Quiz of the inputted number's length
-        MCQuiz currentQuiz = new MCQuiz(questionNumber);
+        MCQuiz currentQuiz = new MCQuiz(questionNumber, new MCStrategy());
         currentIterator = currentQuiz.iterator();
 
         // Sets the current question to be the first question of the Quiz, and sets Buttons
@@ -135,13 +137,13 @@ public class MCQuizQuestion extends AppCompatActivity {
     }
 
     public void setNextQuestion() {
-        MCQuestion currentQuestion = currentIterator.next();
+        QuestionInterface currentQuestion = currentIterator.next();
         mcQuestionView.setText(currentQuestion.getQuestionString());
-        currentCorrectAnswerPosition = currentQuestion.getPosition();
-        mcButtonOne.setText(String.valueOf(currentQuestion.getOptionOne()));
-        mcButtonTwo.setText(String.valueOf(currentQuestion.getOptionTwo()));
-        mcButtonThree.setText(String.valueOf(currentQuestion.getOptionThree()));
-        mcButtonFour.setText(String.valueOf(currentQuestion.getOptionFour()));
+        currentCorrectAnswerPosition = Integer.valueOf(currentQuestion.getQuestionAnswer().get(4));
+        mcButtonOne.setText(currentQuestion.getQuestionAnswer().get(0));
+        mcButtonTwo.setText(currentQuestion.getQuestionAnswer().get(1));
+        mcButtonThree.setText(currentQuestion.getQuestionAnswer().get(2));
+        mcButtonFour.setText(currentQuestion.getQuestionAnswer().get(3));
 
     }
 
