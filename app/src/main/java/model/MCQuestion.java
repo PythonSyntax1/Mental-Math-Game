@@ -6,7 +6,7 @@ import java.util.Random;
 public class MCQuestion implements QuestionInterface{
 
     //The options that appear on the screen for each question
-    private String questionString;
+    private ArrayList<String> questionStrings;
     private String questionAnswer;
     private Integer questionType;
     private Integer numOne;
@@ -44,9 +44,11 @@ public class MCQuestion implements QuestionInterface{
     }
 
     public void createQuestionStringAndAnswer() {
+        questionStrings = new ArrayList<>();
         questionStringGenerator = new QuestionStringGenerator(questionType, numOne, numTwo);
         questionAnswer = questionStringGenerator.returnAnswerandString().get(0);
-        questionString = questionStringGenerator.returnAnswerandString().get(1);
+        String questionStringOne = questionStringGenerator.returnAnswerandString().get(1);
+        questionStrings.add(questionStringOne);
     }
 
     //Based on the randomly generated positions, generates the position and values of each
@@ -94,8 +96,8 @@ public class MCQuestion implements QuestionInterface{
 
     }
 
-    public String getQuestionString() {
-        return questionString;
+    public ArrayList<String> getQuestionString() {
+        return questionStrings;
     }
 
     public ArrayList<String> getQuestionAnswer() {

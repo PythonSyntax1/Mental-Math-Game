@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Question implements QuestionInterface{
 
-    protected String questionString;
+    protected ArrayList<String> questionStrings;
     protected String questionAnswer;
     protected Integer questionType;
     protected Integer numOne;
@@ -30,13 +30,15 @@ public class Question implements QuestionInterface{
     //Creates the question string, by appending the two randomly generated number
     //Sets the question answer by taking the two numbers and applying the correct operation
     public void createQuestionStringAndAnswer() {
+        questionStrings = new ArrayList<>();
         questionStringGenerator = new QuestionStringGenerator(questionType, numOne, numTwo);
         questionAnswer = questionStringGenerator.returnAnswerandString().get(0);
-        questionString = questionStringGenerator.returnAnswerandString().get(1);
+        String questionStringOne = questionStringGenerator.returnAnswerandString().get(1);
+        questionStrings.add(questionStringOne);
     }
 
-    public String getQuestionString() {
-        return questionString;
+    public ArrayList<String> getQuestionString() {
+        return questionStrings;
     }
 
     public ArrayList<String> getQuestionAnswer() {

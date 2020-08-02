@@ -49,7 +49,7 @@ public class QuizQuestion extends AppCompatActivity {
         // Sets the current question to be the first question of the Quiz
         Question currentQuestion = currentIterator.next();
         TextView textView = findViewById(R.id.textView);
-        textView.setText(currentQuestion.getQuestionString());
+        textView.setText(currentQuestion.getQuestionString().get(0));
         currentQuestionAnswer = currentQuestion.getQuestionAnswer().get(0);
 
         progressBar = findViewById(R.id.progressBar2);
@@ -77,7 +77,7 @@ public class QuizQuestion extends AppCompatActivity {
                     progressBar.setProgress(progressStatus);
                     Question currentQuestion = currentIterator.next();
                     TextView textView = findViewById(R.id.textView);
-                    textView.setText(currentQuestion.getQuestionString());
+                    textView.setText(currentQuestion.getQuestionString().get(0));
                     currentQuestionAnswer = currentQuestion.getQuestionAnswer().get(0);
 
                     // If there are no questions left the quiz ends, the timer will stop.

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GameQuestion extends Question {
@@ -55,8 +56,10 @@ public class GameQuestion extends Question {
 
     @Override
     //Returns a string for the question, which includes the question and the current answer
-    public String getQuestionString() {
-        return super.getQuestionString().substring(0, super.getQuestionString().length() -1);
+    public ArrayList<String> getQuestionString() {
+        ArrayList<String> retList = new ArrayList<>();
+        retList.add(super.getQuestionString().get(0).substring(0, super.getQuestionString().get(0).length() -1));
+        return retList;
     }
 
 

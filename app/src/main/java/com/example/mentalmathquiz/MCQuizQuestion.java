@@ -138,7 +138,7 @@ public class MCQuizQuestion extends AppCompatActivity {
 
     public void setNextQuestion() {
         QuestionInterface currentQuestion = currentIterator.next();
-        mcQuestionView.setText(currentQuestion.getQuestionString());
+        mcQuestionView.setText(currentQuestion.getQuestionString().get(0));
         currentCorrectAnswerPosition = Integer.valueOf(currentQuestion.getQuestionAnswer().get(4));
         mcButtonOne.setText(currentQuestion.getQuestionAnswer().get(0));
         mcButtonTwo.setText(currentQuestion.getQuestionAnswer().get(1));

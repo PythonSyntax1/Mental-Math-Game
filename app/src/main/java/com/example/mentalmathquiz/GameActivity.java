@@ -101,7 +101,7 @@ import static com.example.mentalmathquiz.MainMenu.user;
     }
 
     public void setUpQuestion() {
-        questionLabel.setText(currentQuestion.getQuestionString() + " = " + currentQuestion.getCurrentAnswer());
+        questionLabel.setText(currentQuestion.getQuestionString().get(0) + " = " + currentQuestion.getCurrentAnswer());
         resetCheck();
         resetCross();
     }
