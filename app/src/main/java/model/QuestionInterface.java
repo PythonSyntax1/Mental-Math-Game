@@ -7,7 +7,7 @@ public interface QuestionInterface {
 
     void createQuestionStringAndAnswer();
 
-    String getQuestionString();
+    ArrayList<String> getQuestionString();
 
     ArrayList<String> getQuestionAnswer();
 

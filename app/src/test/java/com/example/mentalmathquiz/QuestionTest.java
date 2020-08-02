@@ -7,10 +7,12 @@ import org.junit.Test;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 import model.GameQuestion;
 import model.MCQuestion;
 import model.Question;
+import model.StockTicker;
 
 import static org.junit.Assert.*;
 
@@ -34,6 +36,32 @@ public class QuestionTest {
             MCQuestion singleMCquestion = new MCQuestion();
             mcQuestionTestList.add(singleMCquestion);
         }
+    }
+
+    @Test
+    public void gameQuestionTests() {
+        ArrayList<GameQuestion> testArray = new ArrayList();
+        Integer i = 0;
+        while (i < 3) {
+            GameQuestion tempTestQuestion = new GameQuestion();
+            testArray.add(tempTestQuestion);
+            i ++;
+        }
+        for (GameQuestion q: testArray) {
+            Integer qAnswer = Integer.valueOf(q.getQuestionAnswer().get(4));
+            qAnswer = Integer.valueOf(q.getQuestionAnswer().get(qAnswer));
+            if (q.getRightAnswer() == true) {
+                assert(q.getCurrentAnswer() == qAnswer);
+            } else {
+                assert(q.getCurrentAnswer() != qAnswer);
+            }
+        }
+    }
+
+    @Test
+    public void codeTest() {
+        StockTicker hello = new StockTicker();
+        int hi = 1;
     }
 
     @Test
@@ -110,28 +138,5 @@ public class QuestionTest {
             }
         }
     }
-
-    @Test
-    public void gameQuestionTests() {
-        ArrayList<GameQuestion> testArray = new ArrayList();
-        Integer i = 0;
-        while (i < 3) {
-            GameQuestion tempTestQuestion = new GameQuestion();
-            testArray.add(tempTestQuestion);
-            i ++;
-        }
-        for (GameQuestion q: testArray) {
-            Integer qAnswer = Integer.valueOf(q.getQuestionAnswer().get(4));
-            qAnswer = Integer.valueOf(q.getQuestionAnswer().get(qAnswer));
-            if (q.getRightAnswer() == true) {
-                assert(q.getCurrentAnswer() == qAnswer);
-            } else {
-                assert(q.getCurrentAnswer() != qAnswer);
-            }
-        }
-    }
-
-
-
 
 }
