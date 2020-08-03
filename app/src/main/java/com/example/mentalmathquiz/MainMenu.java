@@ -86,7 +86,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void openStockQuiz(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
+        Intent intent = new Intent(this, NumberInputActivity.class);
         intent.putExtra(quizType, "Stock");
         startActivity(intent);
     }

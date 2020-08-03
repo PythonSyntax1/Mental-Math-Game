@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MCQuizQuestion">
+    tools:context=".StockActivity">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -25,24 +25,23 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="161dp"
-        android:onClick="buttonOneClicked"
+        android:onClick="optionClicked"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="189dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <Button
         android:id="@+id/stockButtonTwo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
-        android:layout_marginLeft="161dp"
         android:layout_marginTop="13dp"
         android:layout_marginEnd="161dp"
-        android:layout_marginRight="161dp"
-        android:onClick="buttonTwoClicked"
+        android:onClick="optionClicked"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,11 +52,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
-        android:layout_marginLeft="161dp"
         android:layout_marginTop="13dp"
         android:layout_marginEnd="161dp"
-        android:layout_marginRight="161dp"
-        android:onClick="buttonThreeClicked"
+        android:onClick="optionClicked"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,11 +65,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
-        android:layout_marginLeft="161dp"
         android:layout_marginTop="13dp"
         android:layout_marginEnd="161dp"
-        android:layout_marginRight="161dp"
-        android:onClick="buttonFourClicked"
+        android:onClick="optionClicked"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +97,9 @@
         android:layout_marginStart="45dp"
         android:layout_marginTop="116dp"
         android:layout_marginEnd="25dp"
+        android:gravity="center"
         android:text="TextView"
+        android:textSize="22sp"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -114,7 +111,9 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="116dp"
         android:layout_marginEnd="25dp"
+        android:gravity="center"
         android:text="TextView"
+        android:textSize="22sp"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -126,7 +125,9 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="116dp"
         android:layout_marginEnd="25dp"
+        android:gravity="center"
         android:text="TextView"
+        android:textSize="22sp"
         app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent" />
@@ -138,7 +139,9 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="116dp"
         android:layout_marginEnd="45dp"
+        android:gravity="center"
         android:text="TextView"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="parent" />
@@ -147,32 +150,52 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginEnd="25dp"
+        android:gravity="center"
         android:text="TextView"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="135dp" />
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:gravity="center"
         android:text="TextView"
-        tools:layout_editor_absoluteX="128dp"
-        tools:layout_editor_absoluteY="136dp" />
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:gravity="center"
         android:text="TextView"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="137dp" />
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="65dp"
+        android:gravity="center"
         android:text="TextView"
-        tools:layout_editor_absoluteX="321dp"
-        tools:layout_editor_absoluteY="137dp" />
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

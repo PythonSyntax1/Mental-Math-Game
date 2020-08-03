@@ -34,6 +34,9 @@ public class StockQuestion implements QuestionInterface {
                 }
             }
         });
+        for (StockTicker st: sortBuffer) {
+            answer.add(st.getName());
+        }
     }
 
     public ArrayList<String> getQuestionString() {

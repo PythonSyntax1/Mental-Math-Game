@@ -1,6 +1,7 @@
 package com.example.mentalmathquiz;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,6 +22,7 @@ import java.util.Iterator;
 import model.MCQuiz;
 import model.MCStrategy;
 import model.QuestionInterface;
+import model.StockStrategy;
 
 import static com.example.mentalmathquiz.MainMenu.user;
 
@@ -58,7 +60,7 @@ public class StockActivity extends AppCompatActivity {
         String quizlength = intent.getStringExtra(NumberInputActivity.quizlength);
         questionNumber = Integer.parseInt(quizlength);
 
-        MCQuiz currentQuiz = new MCQuiz(questionNumber, new MCStrategy());
+        MCQuiz currentQuiz = new MCQuiz(questionNumber, new StockStrategy());
         currentIterator = currentQuiz.iterator();
 
 
@@ -71,10 +73,10 @@ public class StockActivity extends AppCompatActivity {
         stockViewFourTop = findViewById(R.id.textView5);
         stockViewFourBottom = findViewById(R.id.textView9);
 
-        stockButtonOne = findViewById(R.id.mcButtonOne);
-        stockButtonTwo = findViewById(R.id.mcButtonTwo);
-        stockButtonThree = findViewById(R.id.mcButtonThree);
-        stockButtonFour = findViewById(R.id.mcButtonFour);
+        stockButtonOne = findViewById(R.id.stockButtonOne);
+        stockButtonTwo = findViewById(R.id.stockButtonTwo);
+        stockButtonThree = findViewById(R.id.stockButtonThree);
+        stockButtonFour = findViewById(R.id.stockButtonFour);
         setNextQuestion();
 
 
@@ -85,6 +87,35 @@ public class StockActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         progressBar.setMax(questionNumber);
 
+    }
+
+    public void optionClicked(View v) {
+        String curStockString = "Error";
+        switch (v.getId()) {
+            case (R.id.stockButtonOne):
+                curStockString = currentQuestion.getQuestionString().get(0);
+                break;
+            case (R.id.stockButtonTwo):
+                curStockString = currentQuestion.getQuestionString().get(3);
+                break;
+            case (R.id.stockButtonThree):
+                curStockString = currentQuestion.getQuestionString().get(6);
+                break;
+            case (R.id.stockButtonFour) :
+                curStockString = currentQuestion.getQuestionString().get(9);
+                break;
+        }
+        if (curStockString.equals("Error")) {
+            System.out.println("Button click callback called but button not identifiable");
+        } else if (userAnswerStack.contains(curStockString)) {
+            userAnswerStack.remove(curStockString);
+            v.setBackgroundColor(Color.LTGRAY);
+            handleAnswer();
+        } else {
+            userAnswerStack.add(curStockString);
+            v.setBackgroundColor(Color.YELLOW);
+            handleAnswer();
+        }
     }
 
     public void handleAnswer() {
@@ -109,28 +140,34 @@ public class StockActivity extends AppCompatActivity {
         ArrayList<String> questionStrings = currentQuestion.getQuestionString();
 
         stockViewOneTop.setText(questionStrings.get(0));
-        stockViewOneBottom.setText(questionStrings.get(1) + " " + questionStrings.get(2));
+        stockButtonOne.setText(questionStrings.get(0));
+        stockViewOneBottom.setText(questionStrings.get(1) + "  " + questionStrings.get(2) + "%");
         setTickerColour(Double.parseDouble(questionStrings.get(2)), stockViewOneBottom);
 
         stockViewTwoTop.setText(questionStrings.get(3));
-        stockViewTwoBottom.setText(questionStrings.get(4) + " " + questionStrings.get(5));
+        stockButtonTwo.setText(questionStrings.get(3));
+        stockViewTwoBottom.setText(questionStrings.get(4) + "  " + questionStrings.get(5) + "%");
         setTickerColour(Double.parseDouble(questionStrings.get(5)), stockViewTwoBottom);
 
-        stockViewThreeTop.setText(questionStrings.get(7));
-        stockViewThreeBottom.setText(questionStrings.get(8) + " " + questionStrings.get(9));
-        setTickerColour(Double.parseDouble(questionStrings.get(9)), stockViewThreeBottom);
+        stockViewThreeTop.setText(questionStrings.get(6));
+        stockButtonThree.setText(questionStrings.get(6));
+        stockViewThreeBottom.setText(questionStrings.get(7) + "  " + questionStrings.get(8) + "%");
+        setTickerColour(Double.parseDouble(questionStrings.get(8)), stockViewThreeBottom);
 
-        stockViewFourTop.setText(questionStrings.get(10));
-        stockViewFourBottom.setText(questionStrings.get(11) + " " + questionStrings.get(12));
-        setTickerColour(Double.parseDouble(questionStrings.get(12)), stockViewFourBottom);
+        stockViewFourTop.setText(questionStrings.get(9));
+        stockButtonFour.setText(questionStrings.get(9));
+        stockViewFourBottom.setText(questionStrings.get(10) + "  " + questionStrings.get(11) + "%");
+        setTickerColour(Double.parseDouble(questionStrings.get(11)), stockViewFourBottom);
 
 
 
     }
 
     private void setTickerColour(double change, TextView textView) {
-        if (change > 0) {
-            textView.setColo
+        if (change < 0) {
+            textView.setTextColor(Color.RED);
+        } else  {
+            textView.setTextColor(Color.GREEN);
         }
 
     }
