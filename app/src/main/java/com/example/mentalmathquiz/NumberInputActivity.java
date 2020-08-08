@@ -31,8 +31,10 @@ public class NumberInputActivity extends AppCompatActivity {
             openOEQuiz();
         } else if (quiztype.equals("Result")) {
             openResults();
-        } else {
+        } else if (quiztype.equals("MC")){
             openMCQuiz();
+        } else {
+            openStockQuiz();
         }
     }
 
@@ -49,6 +51,11 @@ public class NumberInputActivity extends AppCompatActivity {
 
     public void openResults() {
         Intent intent = new Intent(this, ResultsActivity.class);
+        prepareNewWindow(intent);
+    }
+
+    public void openStockQuiz() {
+        Intent intent = new Intent(this, StockActivity.class);
         prepareNewWindow(intent);
     }
 

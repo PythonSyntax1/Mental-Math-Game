@@ -7,10 +7,12 @@ import org.junit.Test;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 import model.GameQuestion;
 import model.MCQuestion;
 import model.Question;
+import model.StockTicker;
 
 import static org.junit.Assert.*;
 
@@ -37,21 +39,47 @@ public class QuestionTest {
     }
 
     @Test
+    public void gameQuestionTests() {
+        ArrayList<GameQuestion> testArray = new ArrayList();
+        Integer i = 0;
+        while (i < 3) {
+            GameQuestion tempTestQuestion = new GameQuestion();
+            testArray.add(tempTestQuestion);
+            i ++;
+        }
+        for (GameQuestion q: testArray) {
+            Integer qAnswer = Integer.valueOf(q.getQuestionAnswer().get(4));
+            qAnswer = Integer.valueOf(q.getQuestionAnswer().get(qAnswer));
+            if (q.getRightAnswer() == true) {
+                assert(q.getCurrentAnswer() == qAnswer);
+            } else {
+                assert(q.getCurrentAnswer() != qAnswer);
+            }
+        }
+    }
+
+    @Test
+    public void codeTest() {
+        StockTicker hello = new StockTicker();
+        int hi = 1;
+    }
+
+    @Test
     public void mcQuestionPositive() {
         for (MCQuestion testMCQuestion : mcQuestionTestList) {
-            if (testMCQuestion.getQuestionAnswer() < 0) {
+            if (Integer.valueOf(testMCQuestion.getQuestionAnswer().get(4)) < 0) {
                 fail();
             }
-            if (testMCQuestion.getOptionOne() < 0) {
+            if (Integer.valueOf(testMCQuestion.getQuestionAnswer().get(3))< 0) {
                 fail();
             }
-            if (testMCQuestion.getOptionTwo() < 0) {
+            if (Integer.valueOf(testMCQuestion.getQuestionAnswer().get(2)) < 0) {
                 fail();
             }
-            if (testMCQuestion.getOptionThree() < 0) {
+            if (Integer.valueOf(testMCQuestion.getQuestionAnswer().get(1)) < 0) {
                 fail();
             }
-            if (testMCQuestion.getOptionFour() < 0) {
+            if (Integer.valueOf(testMCQuestion.getQuestionAnswer().get(0)) < 0) {
                 fail();
             }
         }
@@ -61,17 +89,19 @@ public class QuestionTest {
     @Test
     public void mcQuestionOneCorrect() {
         for (MCQuestion testMCQuestion : mcQuestionTestList) {
+            Integer qAnswer = Integer.valueOf(testMCQuestion.getQuestionAnswer().get(4));
+            qAnswer = Integer.valueOf(testMCQuestion.getQuestionAnswer().get(qAnswer));
             Integer counter = 0;
-            if (testMCQuestion.getOptionOne() == testMCQuestion.getQuestionAnswer()) {
+            if (Integer.valueOf(testMCQuestion.getQuestionAnswer().get(3)).equals(qAnswer)) {
                 counter += 1;
             }
-            if (testMCQuestion.getOptionTwo() == testMCQuestion.getQuestionAnswer()) {
+            if (Integer.valueOf(testMCQuestion.getQuestionAnswer().get(2)).equals(qAnswer)) {
                 counter += 1;
             }
-            if (testMCQuestion.getOptionThree() == testMCQuestion.getQuestionAnswer()) {
+            if (Integer.valueOf(testMCQuestion.getQuestionAnswer().get(1)).equals(qAnswer)) {
                 counter += 1;
             }
-            if (testMCQuestion.getOptionFour() == testMCQuestion.getQuestionAnswer()) {
+            if (Integer.valueOf(testMCQuestion.getQuestionAnswer().get(0)).equals(qAnswer)) {
                 counter += 1;
             }
             if (counter != 1) {
@@ -108,27 +138,5 @@ public class QuestionTest {
             }
         }
     }
-
-    @Test
-    public void gameQuestionTests() {
-        ArrayList<GameQuestion> testArray = new ArrayList();
-        Integer i = 0;
-        while (i < 3) {
-            GameQuestion tempTestQuestion = new GameQuestion();
-            testArray.add(tempTestQuestion);
-            i ++;
-        }
-
-        for (GameQuestion q: testArray) {
-            if (q.getRightAnswer() == true) {
-                assert(q.getCurrentAnswer() == q.getQuestionAnswer());
-            } else {
-                assert(q.getCurrentAnswer() != q.getQuestionAnswer());
-            }
-        }
-    }
-
-
-
 
 }

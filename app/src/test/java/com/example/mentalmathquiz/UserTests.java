@@ -1,7 +1,7 @@
 package com.example.mentalmathquiz;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.Before;
 
 import java.time.LocalTime;
 

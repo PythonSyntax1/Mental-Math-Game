@@ -1,14 +1,16 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public class Question {
+public class Question implements QuestionInterface{
 
-    protected String questionString;
-    protected Integer questionAnswer;
+    protected ArrayList<String> questionStrings;
+    protected String questionAnswer;
     protected Integer questionType;
     protected Integer numOne;
     protected Integer numTwo;
+    private QuestionStringGenerator questionStringGenerator;
 
 
     public Question() {
@@ -22,52 +24,27 @@ public class Question {
         //Specifies which operation the question should be
         //Operation is one of : *, + , -, /
         questionType = rand3.nextInt(4);
-
         createQuestionStringAndAnswer();
     }
 
     //Creates the question string, by appending the two randomly generated number
     //Sets the question answer by taking the two numbers and applying the correct operation
     public void createQuestionStringAndAnswer() {
-
-        if (questionType == 0) {
-            questionAnswer = numOne + numTwo;
-            questionString = numOne.toString() + "+" + numTwo.toString() + "?";
-        }
-        else if (questionType == 1) {
-
-            //Prevents Question with a negative answer
-            if (numOne > numTwo) {
-            } else {
-                int temp = numTwo;
-                numTwo = numOne;
-                numOne = temp;
-            }
-            questionAnswer = numOne - numTwo;
-            questionString = numOne.toString() + "-" + numTwo.toString() + "?";
-        }
-
-        else if (questionType == 2) {
-            questionAnswer = numOne * numTwo;
-            questionString = numOne.toString() + "*" + numTwo.toString() + "?";
-        }
-        else if (questionType == 3) {
-
-            Integer numFour = (numTwo/questionType) + 1;
-            numOne = numOne * numFour;
-
-            questionAnswer = numOne / numFour;
-            questionString = numOne.toString() + "/" + numFour.toString() + "?";
-        }
-
+        questionStrings = new ArrayList<>();
+        questionStringGenerator = new QuestionStringGenerator(questionType, numOne, numTwo);
+        questionAnswer = questionStringGenerator.returnAnswerandString().get(0);
+        String questionStringOne = questionStringGenerator.returnAnswerandString().get(1);
+        questionStrings.add(questionStringOne);
     }
 
-    public String getQuestionString() {
-        return questionString;
+    public ArrayList<String> getQuestionString() {
+        return questionStrings;
     }
 
-    public Integer getQuestionAnswer() {
-        return questionAnswer;
+    public ArrayList<String> getQuestionAnswer() {
+        ArrayList<String> retList = new ArrayList<>();
+        retList.add(questionAnswer);
+        return retList;
     }
 
     public Integer getQuestionType() {return questionType;}

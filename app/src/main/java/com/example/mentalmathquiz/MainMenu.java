@@ -26,9 +26,9 @@ public class MainMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activtiy_newmainmenu);
         user = new User();
-        if (!updated) {
+        if (updated == null) {
             loadData();
         } else {
             saveData();
@@ -82,6 +82,12 @@ public class MainMenu extends AppCompatActivity {
 
     public void openGame(View view) {
         Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
+    }
+
+    public void openStockQuiz(View view) {
+        Intent intent = new Intent(this, NumberInputActivity.class);
+        intent.putExtra(quizType, "Stock");
         startActivity(intent);
     }
 }

@@ -20,7 +20,7 @@ import static com.example.mentalmathquiz.MainMenu.user;
 
 public class QuizQuestion extends AppCompatActivity {
 
-    private Integer currentQuestionAnswer;
+    private String currentQuestionAnswer;
     private Iterator<Question> currentIterator;
 
     private Integer questionNumber;
@@ -49,8 +49,8 @@ public class QuizQuestion extends AppCompatActivity {
         // Sets the current question to be the first question of the Quiz
         Question currentQuestion = currentIterator.next();
         TextView textView = findViewById(R.id.textView);
-        textView.setText(currentQuestion.getQuestionString());
-        currentQuestionAnswer = currentQuestion.getQuestionAnswer();
+        textView.setText(currentQuestion.getQuestionString().get(0));
+        currentQuestionAnswer = currentQuestion.getQuestionAnswer().get(0);
 
         progressBar = findViewById(R.id.progressBar2);
         progressBar.setMax(questionNumber);
@@ -70,15 +70,15 @@ public class QuizQuestion extends AppCompatActivity {
             int inputedAnswer = Integer.parseInt(editText.getText().toString());
 
             //If the inputted answer is correct
-            if (currentQuestionAnswer == inputedAnswer) {
+            if (Integer.valueOf(currentQuestionAnswer) == inputedAnswer) {
 
                 if (currentIterator.hasNext()) {
                     progressStatus += 1;
                     progressBar.setProgress(progressStatus);
                     Question currentQuestion = currentIterator.next();
                     TextView textView = findViewById(R.id.textView);
-                    textView.setText(currentQuestion.getQuestionString());
-                    currentQuestionAnswer = currentQuestion.getQuestionAnswer();
+                    textView.setText(currentQuestion.getQuestionString().get(0));
+                    currentQuestionAnswer = currentQuestion.getQuestionAnswer().get(0);
 
                     // If there are no questions left the quiz ends, the timer will stop.
                 } else {

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GameQuestion extends Question {
@@ -9,14 +10,17 @@ public class GameQuestion extends Question {
     //The answer that appears in the question string. It can be either wrong or right.
     private Integer currentAnswer;
 
+    private Integer questionAnswerInt;
+
     //Chooses either 0 or 1 randomly. This determine whether the answer will be wrong or right.
     public GameQuestion() {
         super();
         Random rndRightAnswer = new Random();
         Integer randomInteger = rndRightAnswer.nextInt(2);
 
+        questionAnswerInt = Integer.valueOf(questionAnswer);
         if (randomInteger == 0) {
-            currentAnswer = questionAnswer;
+            currentAnswer = questionAnswerInt;
             rightAnswer = true;
         } else {
             createWrongAnswer();
@@ -31,11 +35,11 @@ public class GameQuestion extends Question {
         Random randomPosition = new Random();
         Integer position = randomPosition.nextInt(2);
         if (position == 0) {
-            currentAnswer = questionAnswer - 1;
+            currentAnswer = questionAnswerInt - 1;
         } if (position == 1) {
-            currentAnswer = questionAnswer + 1;
+            currentAnswer = questionAnswerInt + 1;
         } else {
-            currentAnswer = questionAnswer + 2;
+            currentAnswer = questionAnswerInt + 2;
         }
 
     }
@@ -52,8 +56,10 @@ public class GameQuestion extends Question {
 
     @Override
     //Returns a string for the question, which includes the question and the current answer
-    public String getQuestionString() {
-        return super.getQuestionString().substring(0, super.getQuestionString().length() -1);
+    public ArrayList<String> getQuestionString() {
+        ArrayList<String> retList = new ArrayList<>();
+        retList.add(super.getQuestionString().get(0).substring(0, super.getQuestionString().get(0).length() -1));
+        return retList;
     }
 
 
