@@ -124,6 +124,10 @@ public class StockActivity extends AppCompatActivity {
                 if (currentIterator.hasNext()) {
                     progressStatus += 1;
                     progressBar.setProgress(progressStatus);
+                    stockButtonOne.setBackgroundColor(Color.LTGRAY);
+                    stockButtonTwo.setBackgroundColor(Color.LTGRAY);
+                    stockButtonThree.setBackgroundColor(Color.LTGRAY);
+                    stockButtonFour.setBackgroundColor(Color.LTGRAY);
                     setNextQuestion();
                 } else {
                     timer.stop();
