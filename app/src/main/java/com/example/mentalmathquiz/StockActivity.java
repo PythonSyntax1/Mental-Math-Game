@@ -140,6 +140,7 @@ public class StockActivity extends AppCompatActivity {
     }
 
     public void setNextQuestion() {
+        userAnswerStack.clear();
         currentQuestion = currentIterator.next();
         ArrayList<String> questionStrings = currentQuestion.getQuestionString();
 
