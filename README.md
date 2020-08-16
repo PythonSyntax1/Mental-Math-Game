@@ -1,4 +1,4 @@
-# Mental-Math-Game 
+# Quant / Mental Math Game 
 
 This is an Android application that creates Math quizzes in either open ended or multiple choice mode. In addition, there is a flappy bird style game mode. High scores are saved and sorted in a results screen. 
 
