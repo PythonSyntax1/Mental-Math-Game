@@ -2,6 +2,8 @@
 
 Android Application with various game-modes, built with Java.
 
+![Test Image 7](http://edwardmchang.net/images/MentalMathGames.jpg)
+
 # Modes:
 
 **Stock Ranking**
