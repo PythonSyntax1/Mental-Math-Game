@@ -2,8 +2,6 @@
 
 Android Application with various game-modes, built with Java.
 
-![Test Image 7](http://edwardmchang.net/images/MentalMathGames.jpg)
-
 # Modes:
 
 **Stock Ranking**
@@ -19,7 +17,7 @@ Android Application with various game-modes, built with Java.
   - Arcade style game mode where character moves up and down the screen and tries to avoid / catch projectiles. A question and answer is put at the top of the screen, and a player has to move the character to touch check mark projectile if it is correct, and red crosses if it is incorrect
   - Player starts with five lives, and a life is deducted if they miss the correct projectile, touch the incorrect projectile, or touch one of the damage projectiels.
 
-
+![Test Image 7](http://edwardmchang.net/images/MentalMathGames.jpg)
   
   
   
