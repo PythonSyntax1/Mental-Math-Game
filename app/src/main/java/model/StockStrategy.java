@@ -8,8 +8,8 @@ public class StockStrategy implements QuizTypeStrategy {
     public ArrayList<QuestionInterface> createQuiz(int quizLength) {
         ArrayList<QuestionInterface> retList = new ArrayList<>();
         for (int j = 0; j < quizLength; j++) {
-            QuestionInterface newMCQuestion = new StockQuestion();
-            retList.add(newMCQuestion);
+            QuestionInterface newStockQuestion = new StockQuestion();
+            retList.add(newStockQuestion);
         }
         return retList;
     }
