@@ -13,8 +13,8 @@ public class QuestionStrategy implements QuizTypeStrategy {
     public ArrayList<QuestionInterface> createQuiz(int quizLength) {
         ArrayList<QuestionInterface> retList = new ArrayList<>();
         for (int j = 0; j < quizLength; j++) {
-            QuestionInterface newMCQuestion = new Question();
-            retList.add(newMCQuestion);
+            QuestionInterface newQuestion = new Question();
+            retList.add(newQuestion);
         }
         return retList;
     }
