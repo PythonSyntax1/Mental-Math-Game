@@ -2,6 +2,11 @@
 
 Android Application with various game-modes, built with Java.
 
+###Todo:
+
+1. Implement more interfaces to allow for programming to interface and to further follow the open/closed design principle
+2. Clean up object instantiations that don't program to interface. (E.g. ArrayList -> List)
+
 # Modes:
 
 **Stock Ranking**
